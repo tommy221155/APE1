@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; // この２行を追加する． 
-using TMPro; // この２行を追加する．
+using UnityEngine.UI; 
+using TMPro; 
 
 public class contact : MonoBehaviour
 {
@@ -24,7 +24,7 @@ public class contact : MonoBehaviour
 
     void OnCollisionEnter(Collision other) // 衝突を判定する関数を呼ぶ 
     {
-        if (other.gameObject.transform.root.gameObject.name == "wall") // 衝突した物体が「ゴール」なら（※） 
+        if (other.gameObject.transform.root.gameObject.name == "wall") // 衝突した物体が「ゴール」なら
         {
             count += 1; // 衝突フラグを上げる
         } 
