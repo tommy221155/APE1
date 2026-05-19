@@ -4,10 +4,22 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
+    public Transform WarpTarget;
+
     // Start is called before the first frame update
     void Start()
     {
         Application.targetFrameRate = 60; // ← FPS を60 に設定
+    }
+
+     void OnTriggerEnter(Collider other)
+    {
+         //接触したオブジェクトの名称が"WarpTrigger"のとき
+        if(other.gameObject.name == "WarpTrigger")
+        {
+            //"WarapTarget"にワープする
+            transform.position = WarpTarget.position;
+        }
     }
 
     // Update is called once per frame
