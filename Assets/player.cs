@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class player : MonoBehaviour
 {
     public Transform WarpTarget;
     Image outImage;
+    private float displayTime;
+    int f_display = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +17,7 @@ public class player : MonoBehaviour
         Application.targetFrameRate = 60; // ← FPS を60 に設定
         outImage = GameObject.Find("out").GetComponent<Image>();
         outImage.enabled = false;
+        f_display = 0; // 表示フラグを初期化する
     }
 
      void OnTriggerEnter(Collider other)
@@ -25,9 +29,14 @@ public class player : MonoBehaviour
             transform.position = WarpTarget.position;
         }
 
+        
         if(other.gameObject.name == "outTrigger")
         {
-            outImage.enabled = true;
+            if(f_display == 0)
+            {
+                f_display = 1;
+                outImage.enabled = true;
+            }
         }
     }
 
@@ -49,6 +58,17 @@ public class player : MonoBehaviour
         if (Input.GetKey ("left")) // →なら Y軸に -3度回転する
         {
             transform.Rotate(0f, -3.0f, 0f);
+        }
+        if (f_display == 1) // イラスト等を表示している場合だけ時間を合だけ時間を加算する
+        {
+            
+            // 前のフレームからの経過時間（秒）を加算する
+            displayTime += Time.deltaTime;
+        }
+        if(displayTime >= 3.0f)
+        {
+            f_display = 0;
+            displayTime = 0.0f;
         }
     }
 } 
