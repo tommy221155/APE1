@@ -6,15 +6,14 @@ using UnityEngine.UI;
 public class player : MonoBehaviour
 {
     public Transform WarpTarget;
-
-    Image outPictuar;
+    Image outImage;
 
     // Start is called before the first frame update
     void Start()
     {
         Application.targetFrameRate = 60; // ← FPS を60 に設定
-        outPictuar = GameObject.Find("out").GetComponent<Image>();
-        outPictuar.enabled = false;
+        outImage = GameObject.Find("out").GetComponent<Image>();
+        outImage.enabled = false;
     }
 
      void OnTriggerEnter(Collider other)
@@ -28,7 +27,7 @@ public class player : MonoBehaviour
 
         if(other.gameObject.name == "outTrigger")
         {
-            outPictuar.enabled = true;
+            outImage.enabled = true;
         }
     }
 
