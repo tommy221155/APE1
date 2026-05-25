@@ -29,13 +29,12 @@ public class player : MonoBehaviour
             transform.position = WarpTarget.position;
         }
 
-        
-        if(other.gameObject.name == "outTrigger")
+        //接触したオブジェクトの名称が"ImageTrigger_1"のとき
+        if(other.gameObject.name == "ImageTrigger_1")
         {
-            if(f_display == 0)
+            if(f_display != 1)
             {
                 f_display = 1;
-                outImage.enabled = true;
             }
         }
     }
@@ -59,16 +58,18 @@ public class player : MonoBehaviour
         {
             transform.Rotate(0f, -3.0f, 0f);
         }
-        if (f_display == 1) // イラスト等を表示している場合だけ時間を合だけ時間を加算する
+        if (f_display == 1) // "out"の画像を表示している場合だけ時間を合だけ時間を加算する
         {
-            
+            outImage.enabled = true;
             // 前のフレームからの経過時間（秒）を加算する
             displayTime += Time.deltaTime;
+            if(displayTime >= 3.0f)
+            {
+                outImage.enabled = false;
+                f_display = 0;
+                displayTime = 0.0f;
+            }
         }
-        if(displayTime >= 3.0f)
-        {
-            f_display = 0;
-            displayTime = 0.0f;
-        }
+        
     }
 } 

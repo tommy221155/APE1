@@ -1038,7 +1038,7 @@ GameObject:
   - component: {fileID: 417609516}
   - component: {fileID: 417609515}
   m_Layer: 0
-  m_Name: outTrigger
+  m_Name: ImageTrigger_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4214,7 +4214,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 963194227}
-  m_PlaneDistance: 0.5
+  m_PlaneDistance: 0.4
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
