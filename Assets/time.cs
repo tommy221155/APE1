@@ -49,4 +49,9 @@ public class time : MonoBehaviour
             SceneManager.LoadScene("Result");
         } 
     }
+
+    public static float GetTime()
+    {
+        return elapsedTime;
+    }
 }
