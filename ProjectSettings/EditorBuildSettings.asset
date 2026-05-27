@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/meiro.unity
     guid: 81ded070c87954f4b82f0337fb36476a
+  - enabled: 1
+    path: Assets/Result.unity
+    guid: 91988054362187f4a85d6f639236f776
   m_configObjects: {}
