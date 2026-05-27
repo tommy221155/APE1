@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 
 using TMPro; 
+using UnityEngine.SceneManagement;
 
 public class contact : MonoBehaviour
 {
@@ -57,6 +58,7 @@ public class contact : MonoBehaviour
         if (other.gameObject.transform.root.gameObject.name == "wall") // 衝突した物体が「ゴール」なら
         {
             count += 1; // 衝突フラグを上げる
+            SceneManager.LoadScene("Result");
         } 
         if(other.gameObject.name == "checkpoint")
         {

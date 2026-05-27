@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; // この２行を追加する． 
-using TMPro; // この２行を追加する．
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class time : MonoBehaviour
 {
@@ -45,6 +46,7 @@ public class time : MonoBehaviour
         {
             f_Goal = 1; // 衝突フラグを上げる 
             GoalMesseage.gameObject.SetActive(true);
+            SceneManager.LoadScene("Result");
         } 
     }
 }
