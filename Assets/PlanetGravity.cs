@@ -8,6 +8,7 @@ public class PlanetGravity : MonoBehaviour
 
     [SerializeField] private Transform sphereCenter; // 重力の中心
     [SerializeField] private float gravityStrength = 9.8f; // 重力の強さ
+    [SerializeField] private float gravityRange = 30f; //重力が発生する範囲
     private float rotationSpeed = 50f;
 
     private Rigidbody rb;
@@ -27,6 +28,16 @@ public class PlanetGravity : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        float distance =
+            Vector3.Distance(transform.position, sphereCenter.position);
+
+        // 範囲外なら重力をかけない
+        if (distance > gravityRange)
+        {
+            return;
+        }
+
         if (rb == null || sphereCenter == null) return;
 
         // 球の中心へのベクトルを計算（法線）
@@ -41,6 +52,7 @@ public class PlanetGravity : MonoBehaviour
         // 法線ベクトルに従って、プレイヤーの縦方向のRotationを更新する
         Quaternion targetRotation = Quaternion.FromToRotation(-transform.up, direction) * transform.rotation;
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
     }
     // Update is called once per frame
     /*void Update()
