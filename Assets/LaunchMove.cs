@@ -10,7 +10,7 @@ public class LaunchMove : MonoBehaviour
     public Transform endPoint;
     private bool isGrounded = false;
 
-    public float duration = 2f;
+    public float duration = 10f;
 
     private float t = 0f;
 
