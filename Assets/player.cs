@@ -44,6 +44,22 @@ public class player : MonoBehaviour
         {
             gamemanager.PlaySE_1();
         }
+        if(other.gameObject.name == "SETrigger_2")
+        {
+            gamemanager.PlaySE_2();
+        }
+        if(other.gameObject.name == "SETrigger_3")
+        {
+            gamemanager.PlaySE_3();
+        }
+        if(other.gameObject.name == "SETrigger_4")
+        {
+            gamemanager.PlaySE_4();
+        }
+        if(other.gameObject.name == "SETrigger_5")
+        {
+            gamemanager.PlaySE_5();
+        }
     }
 
     // Update is called once per frame
