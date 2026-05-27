@@ -14,7 +14,7 @@ public class time : MonoBehaviour
     [SerializeField] private TextMeshProUGUI GoalMesseage;
 
     // 経過時間を格納する変数 ここに開始からの時間が格納される．
-    private float elapsedTime;
+    public static float elapsedTime;
 
     private int f_Goal; // ゴールに到達した時に１となるフラグを追加する
 
