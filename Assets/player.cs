@@ -6,6 +6,8 @@ using TMPro;
 
 public class player : MonoBehaviour
 {
+    Transform myTransform; // transform情報を格納する変数
+    Vector3 position_start; // 物体の初期位置を格納する変数
     private GameManager gamemanager;
     public Transform WarpTarget;
     Image outImage;
@@ -15,6 +17,7 @@ public class player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         gamemanager = FindObjectOfType<GameManager>();
         Application.targetFrameRate = 60; // ← FPS を60 に設定
         outImage = GameObject.Find("out").GetComponent<Image>();
@@ -43,6 +46,22 @@ public class player : MonoBehaviour
         if(other.gameObject.name == "SETrigger_1")
         {
             gamemanager.PlaySE_1();
+        }
+        if(other.gameObject.name == "SETrigger_2")
+        {
+            gamemanager.PlaySE_2();
+        }
+        if(other.gameObject.name == "SETrigger_3")
+        {
+            gamemanager.PlaySE_3();
+        }
+        if(other.gameObject.name == "SETrigger_4")
+        {
+            gamemanager.PlaySE_4();
+        }
+        if(other.gameObject.name == "SETrigger_5")
+        {
+            gamemanager.PlaySE_5();
         }
     }
 
