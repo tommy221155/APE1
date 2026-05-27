@@ -6,6 +6,8 @@ using TMPro;
 
 public class player : MonoBehaviour
 {
+    Transform myTransform; // transform情報を格納する変数
+    Vector3 position_start; // 物体の初期位置を格納する変数
     private GameManager gamemanager;
     public Transform WarpTarget;
     Image outImage;
@@ -15,6 +17,7 @@ public class player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         gamemanager = FindObjectOfType<GameManager>();
         Application.targetFrameRate = 60; // ← FPS を60 に設定
         outImage = GameObject.Find("out").GetComponent<Image>();
