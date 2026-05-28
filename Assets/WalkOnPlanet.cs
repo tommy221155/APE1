@@ -7,7 +7,7 @@ public class WalkOnPlanet : MonoBehaviour
 
     public Transform sphereCenter; // 球体の中心
     public float speed = 5f; // プレイヤーの移動速度
-    public float rotationSpeed = 80f; // プレイヤーの回転速度
+    public float rotationSpeed = 160f; // プレイヤーの回転速度
 
     private Rigidbody rb;
     // Start is called before the first frame update
