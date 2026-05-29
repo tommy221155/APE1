@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public Image Image_1;
     private float displayTime;
     private int f_display = 0;
+    private float InversionTime;
+    public int f_Inversion = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -90,6 +92,15 @@ public class GameManager : MonoBehaviour
             f_display = 1;
         }
     }
+
+    public void Inversion()
+    {
+        if(f_Inversion != 1)
+        {
+            f_Inversion = 1;
+        }
+    }
+
 // Update is called once per frame
     void Update()
     {
@@ -103,6 +114,16 @@ public class GameManager : MonoBehaviour
                 Image_1.enabled = false;
                 f_display = 0;
                 displayTime = 0.0f;
+            }
+        }
+
+        if (f_Inversion == 1)
+        {
+            InversionTime += Time.deltaTime;
+            if(InversionTime >= 10.0f)
+            {
+                f_Inversion = 0;
+                InversionTime = 0.0f;
             }
         }
     }

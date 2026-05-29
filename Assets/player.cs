@@ -56,6 +56,10 @@ public class player : MonoBehaviour
         {
             gamemanager.PlaySE_5();
         }
+        if(other.gameObject.name == "InversionTrigger")
+        {
+            gamemanager.Inversion();
+        }
     }
 
     // Update is called once per frame
