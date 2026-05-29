@@ -9,6 +9,8 @@ MonoImporter:
   - SE_3: {fileID: 8300000, guid: 362376287763bde4dacca58a0db28967, type: 3}
   - SE_4: {instanceID: 0}
   - SE_5: {instanceID: 0}
+  - SE_warning: {fileID: 8300000, guid: 362376287763bde4dacca58a0db28967, type: 3}
+  - Image_1: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

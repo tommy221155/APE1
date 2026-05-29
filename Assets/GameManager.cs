@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public AudioClip SE_3;
     public AudioClip SE_4;
     public AudioClip SE_5;
+    public AudioClip SE_konran;
+    public AudioClip SE_warning;
     public Image Image_1;
     private float displayTime;
     private int f_display = 0;
@@ -77,6 +79,28 @@ public class GameManager : MonoBehaviour
         if (audioSource != null)
         {
             audioSource.PlayOneShot(SE_5);
+        }
+        else
+        {
+            Debug.Log("audiosource=null");
+        }
+    }
+    public void PlaySE_konran()
+    {
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(SE_konran);
+        }
+        else
+        {
+            Debug.Log("audiosource=null");
+        }
+    }
+    public void PlaySE_warning()
+    {
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(SE_warning);
         }
         else
         {

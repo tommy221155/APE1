@@ -15,7 +15,7 @@ public class player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        position_start = transform.position;
         gamemanager = FindObjectOfType<GameManager>();
         Application.targetFrameRate = 60; // ← FPS を60 に設定
         
@@ -23,11 +23,11 @@ public class player : MonoBehaviour
 
      void OnTriggerEnter(Collider other)
     {
-         //接触したオブジェクトの名称が"WarpTrigger"のとき
-        if(other.gameObject.name == "WarpTrigger")
+         //接触したオブジェクトの名称が"WarpToStartTrigger"のとき
+        if(other.gameObject.name == "WarpToStartTrigger")
         {
-            //"WarapTarget"にワープする
-            transform.position = WarpTarget.position;
+            //初期位置にワープする
+            transform.position = position_start;
         }
 
         //接触したオブジェクトの名称が"ImageTrigger_1"のとき
@@ -59,6 +59,7 @@ public class player : MonoBehaviour
         if(other.gameObject.name == "InversionTrigger")
         {
             gamemanager.Inversion();
+            gamemanager.PlaySE_konran();
         }
     }
 
