@@ -9,13 +9,14 @@ public class player : MonoBehaviour
     Transform myTransform; // transform情報を格納する変数
     Vector3 position_start; // 物体の初期位置を格納する変数
     private GameManager gamemanager;
+
+    //ワープ先のオブジェクトの宣言
     public Transform WarpTarget;
-    private float displayTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        position_start = transform.position;
+        position_start = transform.position; // 初期位置を格納
         gamemanager = FindObjectOfType<GameManager>();
         Application.targetFrameRate = 60; // ← FPS を60 に設定
         
@@ -26,8 +27,8 @@ public class player : MonoBehaviour
          //接触したオブジェクトの名称が"WarpToStartTrigger"のとき
         if(other.gameObject.name == "WarpToStartTrigger")
         {
-            //初期位置にワープする
-            transform.position = position_start;
+            //初期位置にワープする関数の呼び出し
+            WarpToStart();
         }
 
         //接触したオブジェクトの名称が"ImageTrigger_1"のとき
@@ -58,10 +59,16 @@ public class player : MonoBehaviour
         }
         if(other.gameObject.name == "InversionTrigger")
         {
-            gamemanager.Inversion();
             gamemanager.PlaySE_konran();
+            gamemanager.Inversion();
         }
     }
+
+    private void WarpToStart()
+    {
+        // 初期位置へワープ
+        transform.position = position_start;
+    } 
 
     // Update is called once per frame
     void Update()

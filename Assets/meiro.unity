@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5761888}
   m_LocalRotation: {x: 0.08553738, y: 0.024975628, z: 0.33815825, w: 0.93686104}
-  m_LocalPosition: {x: -54.999996, y: 42.26, z: 1.4799995}
+  m_LocalPosition: {x: -67.1, y: 19.89, z: -48.17}
   m_LocalScale: {x: 3.9268398, y: 3, z: 0.111609995}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2312,7 +2312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 417609514}
   m_LocalRotation: {x: 0.09200538, y: -0.0043595103, z: 0.00040281078, w: 0.9957489}
-  m_LocalPosition: {x: -31.815838, y: 46.292778, z: 6.2409935}
+  m_LocalPosition: {x: -43.83, y: 24.22, z: -43.29}
   m_LocalScale: {x: 3.9268403, y: 3, z: 0.11161}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3448,7 +3448,6 @@ MonoBehaviour:
   SE_konran: {fileID: 8300000, guid: faa59d871c113e94485a7c595231e950, type: 3}
   SE_warning: {fileID: 8300000, guid: 362376287763bde4dacca58a0db28967, type: 3}
   Image_1: {fileID: 981243725}
-  f_Inversion: 0
 --- !u!4 &690980758
 Transform:
   m_ObjectHideFlags: 0
@@ -5031,6 +5030,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5104,6 +5104,19 @@ Transform:
   m_Father: {fileID: 1910845245}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deca589547dab7145927045e110eb455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1910845240}
 --- !u!1 &981243723
 GameObject:
   m_ObjectHideFlags: 0
@@ -8779,14 +8792,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607641869}
-  m_LocalRotation: {x: 0.07188178, y: -0.06710219, z: 0.093425974, w: 0.9907583}
-  m_LocalPosition: {x: -40.29, y: 48.35, z: -0.5400009}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.059740398, y: 0.056287136, z: 0.101619326, w: 0.9914315}
+  m_LocalPosition: {x: -52.52, y: 25.01, z: -50.16}
+  m_LocalScale: {x: 3, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1148814501}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 8.915, y: -6.95, z: 10.231}
+  m_LocalEulerAnglesHint: {x: 6.143, y: 7.15, z: 12.089}
 --- !u!65 &1607641871
 BoxCollider:
   m_ObjectHideFlags: 0

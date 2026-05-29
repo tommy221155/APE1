@@ -33,7 +33,7 @@ public class WalkOnPlanet : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         // プレイヤーの移動
-        f_Inversion = gamemanager.f_Inversion;
+        f_Inversion = gamemanager.F_Inversion;
         if(f_Inversion == 0)
         {
             Vector3 movement = transform.forward * vertical;
