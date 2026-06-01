@@ -22,7 +22,12 @@ public class PlanetGravity : MonoBehaviour
         if (rb == null)
         {
             Debug.LogWarning("Rigidbodyがアタッチされていません。重力の適用にはRigidbodyが必要です。");
-        } 
+        }
+        else
+        {
+            rb.useGravity = false; // Unityのデフォルトの重力を無効化
+            rb.constraints = RigidbodyConstraints.FreezeRotation; // 自動回転を防止
+        }
     }
 
 

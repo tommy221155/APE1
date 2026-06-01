@@ -16,11 +16,11 @@ public class WalkOnPlanet : MonoBehaviour
     {
         gamemanager = FindObjectOfType<GameManager>();
         rb = GetComponent<Rigidbody>();
-        if (rb != null)
+        /*if (rb != null)
         {
             rb.useGravity = false; // Unityのデフォルトの重力を無効化
             rb.constraints = RigidbodyConstraints.FreezeRotation; // 自動回転を防止
-        }
+        }*/
     }
 
     // Update is called once per frame
