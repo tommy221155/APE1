@@ -58,7 +58,7 @@ public class contact : MonoBehaviour
         if (other.gameObject.transform.root.gameObject.name == "wall") // 衝突した物体が「ゴール」なら
         {
             count += 1; // 衝突フラグを上げる
-            SceneManager.LoadScene("Result");
+            //SceneManager.LoadScene("Result");
         } 
         if(other.gameObject.name == "checkpoint")
         {
