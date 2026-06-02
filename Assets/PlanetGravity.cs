@@ -40,6 +40,7 @@ public class PlanetGravity : MonoBehaviour
         // 範囲外なら重力をかけない
         if (distance > gravityRange)
         {
+            rb.useGravity = true;
             return;
         }
 

@@ -63,6 +63,7 @@ public class LaunchMove : MonoBehaviour
 
         transform.position = pos;
 
+
         if (t >= 1f)
         {
             isLaunching = false;
