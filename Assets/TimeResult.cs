@@ -13,7 +13,7 @@ public class TimeResult : MonoBehaviour
     void Start()
     {
         ResultTime = time.GetTime();
-        TimeResultText.text = string.Format("Time : {0}",ResultTime);
+        TimeResultText.text = string.Format("Time : {0:f2}s",ResultTime);
     }
 
     // Update is called once per frame
