@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public AudioClip SE_3;
     public AudioClip SE_4;
     public AudioClip SE_5;
+    public AudioClip SE_Image_2;
     public AudioClip SE_konran;
     public AudioClip SE_warning;
     public AudioClip SE_Launcher;
@@ -136,6 +137,7 @@ public class GameManager : MonoBehaviour
     {
         if(f_display != 1)
         {
+            
             f_display = 1; //表示フラッグを立てる
         }
     }
@@ -143,6 +145,14 @@ public class GameManager : MonoBehaviour
     {
         if(f_display != 2)
         {
+            if (audioSource != null)
+            {
+                audioSource.PlayOneShot(SE_Image_2);
+            }
+            else
+            {
+                Debug.Log("audiosource=null");
+            }
             f_display = 2; //表示フラッグを立てる
         }
     }
