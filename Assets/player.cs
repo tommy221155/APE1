@@ -48,23 +48,23 @@ public class player : MonoBehaviour
             gamemanager.DisplayImage_2();
         }
 
-        if(other.gameObject.name == "SETrigger_1")
+        if(other.gameObject.CompareTag("SETrigger_1"))
         {
             gamemanager.PlaySE_1();
         }
-        if(other.gameObject.name == "SETrigger_2")
+        if(other.gameObject.CompareTag("SETrigger_2"))
         {
             gamemanager.PlaySE_2();
         }
-        if(other.gameObject.name == "SETrigger_3")
+        if(other.gameObject.CompareTag("SETrigger_3"))
         {
             gamemanager.PlaySE_3();
         }
-        if(other.gameObject.name == "SETrigger_4")
+        if(other.gameObject.CompareTag("SETrigger_4"))
         {
             gamemanager.PlaySE_4();
         }
-        if(other.gameObject.name == "SETrigger_5")
+        if(other.gameObject.CompareTag("SETrigger_5"))
         {
             gamemanager.PlaySE_5();
         }

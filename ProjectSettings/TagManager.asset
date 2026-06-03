@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Launcher
   - wall
+  - SETrigger_1
+  - SETrigger_2
+  - SETrigger_3
+  - SETrigger_4
+  - SETrigger_5
   layers:
   - Default
   - TransparentFX
