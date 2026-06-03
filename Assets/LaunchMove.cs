@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LaunchMove : MonoBehaviour
 {
-
+    private GameManager gamemanager;
     public Transform startPoint;
     public Transform controlPoint;
     public Transform endPoint;
@@ -16,7 +16,13 @@ public class LaunchMove : MonoBehaviour
 
     private bool isLaunching = false;
 
-    private void OnCollisionEnter(Collision collision)
+    // Start is called before the first frame update
+    void Start()
+    {
+        gamemanager = FindObjectOfType<GameManager>();
+    }
+
+     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Launcher"))
         {
@@ -30,12 +36,6 @@ public class LaunchMove : MonoBehaviour
         {
             isGrounded = false;
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -75,6 +75,7 @@ public class LaunchMove : MonoBehaviour
     // 発射開始
     public void Launch()
     {
+        gamemanager.PlaySE_Launcher();
         t = 0f;
         isLaunching = true;
     }

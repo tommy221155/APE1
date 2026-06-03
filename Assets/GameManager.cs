@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public AudioClip SE_5;
     public AudioClip SE_konran;
     public AudioClip SE_warning;
+    public AudioClip SE_Launcher;
     public Image Image_1;
     public Image Image_2;
 
@@ -112,6 +113,17 @@ public class GameManager : MonoBehaviour
         if (audioSource != null)
         {
             audioSource.PlayOneShot(SE_warning);
+        }
+        else
+        {
+            Debug.Log("audiosource=null");
+        }
+    }
+    public void PlaySE_Launcher()
+    {
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(SE_Launcher);
         }
         else
         {

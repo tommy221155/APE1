@@ -55,7 +55,7 @@ public class contact : MonoBehaviour
 
     void OnCollisionEnter(Collision other) // 衝突を判定する関数を呼ぶ 
     {
-        if (other.gameObject.transform.root.gameObject.name == "wall") // 衝突した物体が「ゴール」なら
+        if (other.gameObject.CompareTag("wall")) // 衝突した物体が「ゴール」なら
         {
             count += 1; // 衝突フラグを上げる
             //SceneManager.LoadScene("Result");
