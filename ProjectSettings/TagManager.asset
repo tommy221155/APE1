@@ -11,6 +11,7 @@ TagManager:
   - SETrigger_3
   - SETrigger_4
   - SETrigger_5
+  - InversionTrigger
   layers:
   - Default
   - TransparentFX

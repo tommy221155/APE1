@@ -60,7 +60,12 @@ public class contact : MonoBehaviour
             count += 1; // 衝突フラグを上げる
             //SceneManager.LoadScene("Result");
         } 
-        if(other.gameObject.name == "checkpoint")
+        
+    }
+
+    void OnTriggerEnter(Collider other_t)
+    {
+        if(other_t.gameObject.name == "checkpoint")
         {
             check = 1;
             savedPosition = new Vector3(3f,1f,-7f);

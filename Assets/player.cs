@@ -12,10 +12,12 @@ public class player : MonoBehaviour
 
     //ワープ先のオブジェクトの宣言
     public Transform WarpTarget;
+    public Transform CheckPoint;
 
     //ワープ後に向く先のオブジェクトの宣言
     public Transform lookTarget_1;
     public Transform lookTarget_2;
+    public Transform lookTarget_3;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,7 @@ public class player : MonoBehaviour
         
     }
 
-     void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
          //接触したオブジェクトの名称が"WarpToStartTrigger"のとき
         if(other.gameObject.name == "WarpToStartTrigger")
@@ -36,7 +38,12 @@ public class player : MonoBehaviour
             WarpToStart();
         }
 
-        
+        if(other.gameObject.name == "WarpToCheckTrigger")
+        {
+            //初期位置にワープする関数の呼び出し
+            gamemanager.PlaySE_Warp();
+            WarpToCheck();
+        }
 
         //接触したオブジェクトの名称が"ImageTrigger_1"のとき
         if(other.gameObject.name == "ImageTrigger_1")
@@ -46,6 +53,10 @@ public class player : MonoBehaviour
         if(other.gameObject.name == "ImageTrigger_2")
         {
             gamemanager.DisplayImage_2();
+        }
+        if(other.gameObject.name == "ImageTrigger_3")
+        {
+            gamemanager.DisplayImage_3();
         }
 
         if(other.gameObject.CompareTag("SETrigger_1"))
@@ -68,7 +79,7 @@ public class player : MonoBehaviour
         {
             gamemanager.PlaySE_5();
         }
-        if(other.gameObject.name == "InversionTriggerP1")
+        if(other.gameObject.CompareTag("InversionTrigger"))
         {
             gamemanager.PlaySE_konran();
             gamemanager.Inversion();
@@ -98,6 +109,19 @@ public class player : MonoBehaviour
         }
     }
 
+    private void WarpToCheck()
+    {
+        transform.position = CheckPoint.position;
+        if(lookTarget_3 != null)
+        {
+            transform.rotation = lookTarget_3.rotation;
+        }
+        else
+        {
+            Debug.LogWarning("null LookTarget_3.");
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -105,6 +129,10 @@ public class player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.I))
         {
             WarpToTarget();
+        }
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            WarpToCheck();
         }
     }
 } 
