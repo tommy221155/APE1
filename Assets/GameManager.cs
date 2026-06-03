@@ -13,10 +13,12 @@ public class GameManager : MonoBehaviour
     public AudioClip SE_3;
     public AudioClip SE_4;
     public AudioClip SE_5;
+    public AudioClip SE_Image_1;
     public AudioClip SE_Image_2;
     public AudioClip SE_konran;
     public AudioClip SE_warning;
     public AudioClip SE_Launcher;
+    public AudioClip SE_Warp;
     public Image Image_1;
     public Image Image_2;
 
@@ -131,13 +133,31 @@ public class GameManager : MonoBehaviour
             Debug.Log("audiosource=null");
         }
     }
+    public void PlaySE_Warp()
+    {
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(SE_Warp);
+        }
+        else
+        {
+            Debug.Log("audiosource=null");
+        }
+    }
 
     //画像表示用の関数
     public void DisplayImage_1()
     {
         if(f_display != 1)
         {
-            
+            if (audioSource != null)
+            {
+                audioSource.PlayOneShot(SE_Image_1);
+            }
+            else
+            {
+                Debug.Log("audiosource=null");
+            }
             f_display = 1; //表示フラッグを立てる
         }
     }

@@ -32,6 +32,7 @@ public class player : MonoBehaviour
         if(other.gameObject.name == "WarpToStartTrigger")
         {
             //初期位置にワープする関数の呼び出し
+            gamemanager.PlaySE_Warp();
             WarpToStart();
         }
 
