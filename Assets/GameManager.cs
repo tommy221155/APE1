@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public AudioClip SE_konran;
     public AudioClip SE_warning;
     public Image Image_1;
+    public Image Image_2;
 
     //パラメータの宣言
     private float displayTime;
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Image_1.enabled = false; //初期設定では表示しない
+        Image_2.enabled = false;
         f_display = 0; // 表示フラグを初期化する
         audioSource = GetComponent<AudioSource>();
     }
@@ -125,6 +127,13 @@ public class GameManager : MonoBehaviour
             f_display = 1; //表示フラッグを立てる
         }
     }
+    public void DisplayImage_2()
+    {
+        if(f_display != 2)
+        {
+            f_display = 2; //表示フラッグを立てる
+        }
+    }
 
     //操作反転用の関数
     public void Inversion()
@@ -145,6 +154,18 @@ public class GameManager : MonoBehaviour
             if(displayTime >= 3.0f) //三秒表示したら
             {
                 Image_1.enabled = false; //"Image_1"を非表示にする
+                f_display = 0; //表示フラッグをリセット
+                displayTime = 0.0f; //表示時間をリセット
+            }
+        }
+
+        if (f_display == 2) 
+        {
+            Image_2.enabled = true; //"Image_1"を表示する
+            displayTime += Time.deltaTime; //表示時間を加算する
+            if(displayTime >= 3.0f) //三秒表示したら
+            {
+                Image_2.enabled = false; //"Image_1"を非表示にする
                 f_display = 0; //表示フラッグをリセット
                 displayTime = 0.0f; //表示時間をリセット
             }

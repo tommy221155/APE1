@@ -42,6 +42,10 @@ public class player : MonoBehaviour
         {
             gamemanager.DisplayImage_1();
         }
+        if(other.gameObject.name == "ImageTrigger_2")
+        {
+            gamemanager.DisplayImage_2();
+        }
 
         if(other.gameObject.name == "SETrigger_1")
         {
@@ -63,7 +67,7 @@ public class player : MonoBehaviour
         {
             gamemanager.PlaySE_5();
         }
-        if(other.gameObject.name == "InversionTrigger")
+        if(other.gameObject.name == "InversionTriggerP1")
         {
             gamemanager.PlaySE_konran();
             gamemanager.Inversion();
