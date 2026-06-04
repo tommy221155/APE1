@@ -12,6 +12,7 @@ TagManager:
   - SETrigger_4
   - SETrigger_5
   - InversionTrigger
+  - Launcher1
   layers:
   - Default
   - TransparentFX

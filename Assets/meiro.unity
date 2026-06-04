@@ -43149,7 +43149,7 @@ GameObject:
   - component: {fileID: 1316450740}
   m_Layer: 0
   m_Name: Launcher1
-  m_TagString: Untagged
+  m_TagString: Launcher1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53528,6 +53528,7 @@ GameObject:
   - component: {fileID: 1910845250}
   - component: {fileID: 1910845249}
   - component: {fileID: 1910845251}
+  - component: {fileID: 1910845252}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -53722,6 +53723,24 @@ MonoBehaviour:
   controlPoint: {fileID: 1080527666}
   endPoint: {fileID: 812626758}
   duration: 3
+--- !u!114 &1910845252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910845240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8af48be74e5e7734caace32f174dfec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  duration: 10
 --- !u!1 &1913717091
 GameObject:
   m_ObjectHideFlags: 0
