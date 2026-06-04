@@ -12,6 +12,9 @@ public class PlanetGravity : MonoBehaviour
     private float rotationSpeed = 50f;
 
     private Rigidbody rb;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,4 +68,9 @@ public class PlanetGravity : MonoBehaviour
     {
         
     }*/
+    public void SetGravityCenter(Transform newCenter)
+    {
+        sphereCenter = newCenter;
+    }
+
 }
