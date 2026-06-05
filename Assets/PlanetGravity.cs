@@ -40,10 +40,11 @@ public class PlanetGravity : MonoBehaviour
         float distance =
             Vector3.Distance(transform.position, sphereCenter.position);
 
+
         // 範囲外なら重力をかけない
         if (distance > gravityRange)
         {
-            rb.useGravity = true;
+            rb.useGravity = false;
             return;
         }
 

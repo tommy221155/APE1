@@ -5,10 +5,15 @@ using UnityEngine;
 public class LaunchMove1 : MonoBehaviour
 {
     private GameManager gamemanager;
+    public Transform startPoint;
+    public Transform controlPoint1;
+    public Transform middlePoint;
+    public Transform controlPoint2;
+    public Transform endPoint;
 
+    
     private bool isGrounded = false;
-    public Transform[] points;
-    private int currentSegment = 0;
+
     public float duration = 10f;
 
     private float t = 0f;
@@ -51,26 +56,41 @@ public class LaunchMove1 : MonoBehaviour
 
         t += Time.deltaTime / duration;
 
-        Vector3 startPos =
-            points[currentSegment].position;
+        Vector3 pos;
 
-        Vector3 endPos =
-            points[currentSegment + 1].position;
+    if (t < 0.5f)
+    {
+        float localT = t * 2f;
 
-        transform.position =
-            Vector3.Lerp(startPos, endPos, t);
+        Vector3 p0 = startPoint.position;
+        Vector3 p1 = controlPoint1.position;
+        Vector3 p2 = middlePoint.position;
+
+        pos =
+            Mathf.Pow(1 - localT, 2) * p0 +
+            2 * (1 - localT) * localT * p1 +
+            Mathf.Pow(localT, 2) * p2;
+    }
+    else
+    {
+        float localT = (t - 0.5f) * 2f;
+
+        Vector3 p0 = middlePoint.position;
+        Vector3 p1 = controlPoint2.position;
+        Vector3 p2 = endPoint.position;
+
+        pos =
+            Mathf.Pow(1 - localT, 2) * p0 +
+            2 * (1 - localT) * localT * p1 +
+            Mathf.Pow(localT, 2) * p2;
+    }
+
+transform.position = pos;
 
 
         if (t >= 1f)
         {
-            currentSegment++;
-        t = 0f;
-
-        if(currentSegment >= points.Length - 1)
-            {
-                isLaunching = false;
-                currentSegment = 0;
-            }
+            isLaunching = false;
         }
 
         
@@ -80,8 +100,6 @@ public class LaunchMove1 : MonoBehaviour
     public void Launch()
     {
         gamemanager.PlaySE_Launcher();
-
-        currentSegment = 0;
         t = 0f;
         isLaunching = true;
     }
