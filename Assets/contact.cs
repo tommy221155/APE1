@@ -32,7 +32,7 @@ public class contact : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ContactCount.text = string.Format("Hit wall {0}", count);
+        //ContactCount.text = string.Format("Hit wall {0}", count);
         CheckCount.text = string.Format("check {0}", check);
 
         if(Input.GetKey(KeyCode.RightShift))
@@ -43,6 +43,7 @@ public class contact : MonoBehaviour
                 if(isChecked)
                 {
                     player.transform.position = savedPosition;
+                    transform.rotation = Quaternion.Euler(0, 0, -180);
                     holdTime = 0f;
                 }
             }
@@ -68,7 +69,8 @@ public class contact : MonoBehaviour
         if(other_t.gameObject.name == "checkpoint")
         {
             check = 1;
-            savedPosition = new Vector3(3f,1f,-7f);
+            savedPosition = other_t.transform.position + new Vector3(0f, 0f, 1f);
+
             isChecked = true;
         }
     }
