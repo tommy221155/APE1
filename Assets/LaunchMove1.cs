@@ -11,6 +11,18 @@ public class LaunchMove1 : MonoBehaviour
     public Transform controlPoint2;
     public Transform endPoint;
 
+    public Camera mainCamera;
+    public Transform launchCameraPoint;
+
+    private Transform originalParent;
+    private Vector3 originalPosition;
+    private Quaternion originalRotation;
+
+    public Transform launchCameraPoint2;
+    private bool cameraChanged = false;
+    private Vector3 originalLocalPosition;
+    private Quaternion originalLocalRotation;
+
     
     private bool isGrounded = false;
 
@@ -54,43 +66,60 @@ public class LaunchMove1 : MonoBehaviour
 
         if (!isLaunching) return;
 
+        mainCamera.transform.LookAt(transform);
+
         t += Time.deltaTime / duration;
 
         Vector3 pos;
 
-    if (t < 0.5f)
-    {
-        float localT = t * 2f;
+        if (t < 0.5f)
+        {
+            float localT = t * 2f;
 
-        Vector3 p0 = startPoint.position;
-        Vector3 p1 = controlPoint1.position;
-        Vector3 p2 = middlePoint.position;
+            Vector3 p0 = startPoint.position;
+            Vector3 p1 = controlPoint1.position;
+            Vector3 p2 = middlePoint.position;
 
-        pos =
-            Mathf.Pow(1 - localT, 2) * p0 +
-            2 * (1 - localT) * localT * p1 +
-            Mathf.Pow(localT, 2) * p2;
-    }
-    else
-    {
-        float localT = (t - 0.5f) * 2f;
+            pos =
+                Mathf.Pow(1 - localT, 2) * p0 +
+                2 * (1 - localT) * localT * p1 +
+                Mathf.Pow(localT, 2) * p2;
+        }
+        else
+        {
+            float localT = (t - 0.5f) * 2f;
 
-        Vector3 p0 = middlePoint.position;
-        Vector3 p1 = controlPoint2.position;
-        Vector3 p2 = endPoint.position;
+            Vector3 p0 = middlePoint.position;
+            Vector3 p1 = controlPoint2.position;
+            Vector3 p2 = endPoint.position;
 
-        pos =
-            Mathf.Pow(1 - localT, 2) * p0 +
-            2 * (1 - localT) * localT * p1 +
-            Mathf.Pow(localT, 2) * p2;
-    }
+            pos =
+                Mathf.Pow(1 - localT, 2) * p0 +
+                2 * (1 - localT) * localT * p1 +
+                Mathf.Pow(localT, 2) * p2;
+        }
 
-transform.position = pos;
+        transform.position = pos;
+
+        if (!cameraChanged && t >= 0.5f)
+        {
+
+            mainCamera.transform.position =
+                launchCameraPoint2.position;
+
+            cameraChanged = true;
+        }
 
 
         if (t >= 1f)
         {
             isLaunching = false;
+
+            // 元の親(Player)に戻す
+            mainCamera.transform.SetParent(originalParent);
+
+            mainCamera.transform.localPosition = originalLocalPosition;
+            mainCamera.transform.localRotation = originalLocalRotation;
         }
 
         
@@ -100,7 +129,21 @@ transform.position = pos;
     public void Launch()
     {
         gamemanager.PlaySE_Launcher();
+
+        originalParent = mainCamera.transform.parent;
+        originalLocalPosition = mainCamera.transform.localPosition;
+        originalLocalRotation = mainCamera.transform.localRotation;
+
+        mainCamera.transform.SetParent(null);
+
+        mainCamera.transform.position =
+            launchCameraPoint.position;
+
+        mainCamera.transform.rotation =
+            launchCameraPoint.rotation;
+
         t = 0f;
+        cameraChanged = false;
         isLaunching = true;
     }
 }

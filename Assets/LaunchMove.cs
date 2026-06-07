@@ -8,6 +8,15 @@ public class LaunchMove : MonoBehaviour
     public Transform startPoint;
     public Transform controlPoint;
     public Transform endPoint;
+
+    public Camera mainCamera;
+    public Transform launchCameraPoint;
+
+    private Transform originalParent;
+    private Vector3 originalLocalPosition;
+    private Quaternion originalLocalRotation;
+
+
     private bool isGrounded = false;
 
     public float duration = 10f;
@@ -50,6 +59,8 @@ public class LaunchMove : MonoBehaviour
 
         if (!isLaunching) return;
 
+        mainCamera.transform.LookAt(transform);
+
         t += Time.deltaTime / duration;
 
         Vector3 p0 = startPoint.position;
@@ -67,6 +78,16 @@ public class LaunchMove : MonoBehaviour
         if (t >= 1f)
         {
             isLaunching = false;
+
+            transform.rotation = Quaternion.identity;
+
+            mainCamera.transform.SetParent(originalParent);
+
+            mainCamera.transform.localPosition =
+                originalLocalPosition + new Vector3(0f, -3f, 0f);
+
+            mainCamera.transform.localRotation =
+                originalLocalRotation * Quaternion.Euler(-30f, 0f, 0f);
         }
 
         
@@ -76,7 +97,21 @@ public class LaunchMove : MonoBehaviour
     public void Launch()
     {
         gamemanager.PlaySE_Launcher();
+
+        originalParent = mainCamera.transform.parent;
+        originalLocalPosition = mainCamera.transform.localPosition;
+        originalLocalRotation = mainCamera.transform.localRotation;
+
+        mainCamera.transform.SetParent(null);
+
+        mainCamera.transform.position =
+            launchCameraPoint.position;
+
+        mainCamera.transform.rotation =
+            launchCameraPoint.rotation;
+
         t = 0f;
+
         isLaunching = true;
     }
 }
