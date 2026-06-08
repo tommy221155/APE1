@@ -35,7 +35,7 @@ public class contact : MonoBehaviour
         //ContactCount.text = string.Format("Hit wall {0}", count);
         CheckCount.text = string.Format("check {0}", check);
 
-        if(Input.GetKey(KeyCode.RightShift))
+        if(Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift))
         {
             holdTime += Time.deltaTime;
             if(holdTime >= needHoldTime)

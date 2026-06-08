@@ -9,10 +9,13 @@ public class player : MonoBehaviour
     Transform myTransform; // transform情報を格納する変数
     Vector3 position_start; // 物体の初期位置を格納する変数
     private GameManager gamemanager;
+    private int isPlanet1;
+    
 
     //ワープ先のオブジェクトの宣言
-    public Transform WarpTarget;
+    public Transform MeiroStart;
     public Transform CheckPoint;
+    public Transform LauncherPoint;
 
     //ワープ後に向く先のオブジェクトの宣言
     public Transform lookTarget_1;
@@ -24,8 +27,8 @@ public class player : MonoBehaviour
     {
         position_start = transform.position; // 初期位置を格納
         gamemanager = FindObjectOfType<GameManager>();
-        Application.targetFrameRate = 120; // ← FPS を60 に設定
-        
+        Application.targetFrameRate = 60; // ← FPS を60 に設定
+        isPlanet1 = 0;
     }
 
     void OnTriggerEnter(Collider other)
@@ -86,26 +89,28 @@ public class player : MonoBehaviour
         }
     }
 
-    private void WarpToStart()
+    void OnCollisionStay(Collision other)
     {
-        // 初期位置へワープ
-        transform.position = position_start;
-        if(lookTarget_1 != null)
+        if(other.gameObject.CompareTag("Planet1Ground"))
         {
-            transform.rotation = lookTarget_1.rotation;
+            isPlanet1 = 1;
+        }
+    }
+    void OnCollisionExit(Collision other)
+    {
+        if(other.gameObject.CompareTag("Planet1Ground"))
+        {
+            isPlanet1 = 0;
         }
     }
 
-    private void WarpToTarget()
+    private void WarpToStart()
     {
-        transform.position = WarpTarget.position;
-        if(lookTarget_2 != null)
+        // 初期位置へワープ
+        transform.position = MeiroStart.position;
+        if(lookTarget_1 != null)
         {
-            transform.rotation = lookTarget_2.rotation;
-        }
-        else
-        {
-            Debug.LogWarning("null LookTarget_2.");
+            transform.rotation = lookTarget_1.rotation;
         }
     }
 
@@ -122,17 +127,33 @@ public class player : MonoBehaviour
         }
     }
 
+    private void WarpToLauncher()
+    {
+        transform.position = LauncherPoint.position;
+        if(lookTarget_2 != null)
+        {
+            transform.rotation = lookTarget_2.rotation;
+        }
+        else
+        {
+            Debug.LogWarning("null LookTarget_2.");
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-      // テスト用のコード．完成前に消す
-        if(Input.GetKeyDown(KeyCode.I))
+        // テスト用のコード．完成前に消す(つもりだったが面白いので残す)
+        if(isPlanet1 == 1)
         {
-            WarpToTarget();
-        }
-        if(Input.GetKeyDown(KeyCode.O))
-        {
+            if(Input.GetKeyDown(KeyCode.I))
+            {
+            WarpToLauncher();
+            }
+            if(Input.GetKeyDown(KeyCode.O))
+            {
             WarpToCheck();
+            }
         }
     }
 } 
