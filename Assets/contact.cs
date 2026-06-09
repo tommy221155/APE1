@@ -10,18 +10,23 @@ public class contact : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI ContactCount;
     [SerializeField] private TextMeshProUGUI CheckCount;
-    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject playerObject;
 
+    private player Player;
     private int count;
     private int check;
     private Vector3 savedPosition;
     private bool isChecked;
     private float holdTime;
     private float needHoldTime;
+    private int isPlanet1;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        Player = FindObjectOfType<player>();
         count = 0;
         check = 0;
         isChecked = false;
@@ -35,6 +40,8 @@ public class contact : MonoBehaviour
         //ContactCount.text = string.Format("Hit wall {0}", count);
         CheckCount.text = string.Format("check {0}", check);
 
+        isPlanet1 = Player.IsPlanet1;
+        
         if(Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift))
         {
             holdTime += Time.deltaTime;
@@ -42,9 +49,11 @@ public class contact : MonoBehaviour
             {
                 if(isChecked)
                 {
-                    player.transform.position = savedPosition;
-                    transform.rotation = Quaternion.Euler(0, 0, -180);
-                    holdTime = 0f;
+                    if(isPlanet1 == 1){
+                        playerObject.transform.position = savedPosition;
+                        transform.rotation = Quaternion.Euler(0, 0, -180);
+                        holdTime = 0f;
+                    }
                 }
             }
         }

@@ -11,6 +11,11 @@ public class player : MonoBehaviour
     private GameManager gamemanager;
     private int isPlanet1;
     
+    public int IsPlanet1
+    {
+        get{return isPlanet1;}
+    }
+    
 
     //ワープ先のオブジェクトの宣言
     public Transform MeiroStart;

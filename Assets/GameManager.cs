@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     private int f_display = 0; // 画像表示用のフラッグ
     private float InversionTime;
     private int f_Inversion = 0; // 操作反転のフラッグ
+    
     public int F_Inversion
     {
         get{return f_Inversion;}
@@ -253,5 +254,4 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
 }
